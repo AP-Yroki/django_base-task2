@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import News
-from .forms import NewsForm
+from .forms import NewsForm, CategoryForm, AuthorForm, PublisherForm
 from django.http import HttpResponseNotFound
 
 def news_list(request):
@@ -36,3 +36,33 @@ def delete_news(request, id):
 def index(request):
     news = News.objects.all()
     return render(request, 'index.html', context={'news': news})
+
+def add_category(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = CategoryForm()
+    return render(request, 'add_category.html', {'form': form})
+
+def add_author(request):
+    if request.method == 'POST':
+        form = AuthorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = AuthorForm()
+    return render(request, 'add_author.html', {'form': form})
+
+def add_publisher(request):
+    if request.method == 'POST':
+        form = PublisherForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = PublisherForm()
+    return render(request, 'add_publisher.html', {'form': form})

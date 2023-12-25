@@ -1,4 +1,3 @@
-# models.py
 from django.db import models
 
 class Category(models.Model):
@@ -15,6 +14,7 @@ class Author(models.Model):
 
 class Publisher(models.Model):
     name = models.CharField(max_length=100)
+    authors = models.ManyToManyField(Author)  # Связь многие-ко-многим с авторами
 
     def __str__(self):
         return self.name

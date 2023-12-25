@@ -18,8 +18,8 @@
         <p>Category: {{ n.category.name }}</p>
         <p>Author: {{ n.author.name }}</p>
         <p>Publishers: {% for publisher in n.publishers.all %}{{ publisher.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-        <a href="{% url 'edit_news' n.id %}">Edit</a> |
-        <a href="{% url 'delete_news' n.id %}">Delete</a>
+        <a href="{% url 'edit_news' n.id %}">Изменить</a> |
+        <a href="{% url 'delete_news' n.id %}">Удалить</a>
     {% endfor %}
 </body>
 </html>

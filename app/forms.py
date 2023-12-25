@@ -1,7 +1,20 @@
-# forms.py
 from django import forms
 from .models import News, Category, Author, Publisher
 
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['name']
+
+class AuthorForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields = ['name']
+
+class PublisherForm(forms.ModelForm):
+    class Meta:
+        model = Publisher
+        fields = ['name']
 
 class NewsForm(forms.ModelForm):
     class Meta:
